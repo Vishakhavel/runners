@@ -20,13 +20,12 @@ public class RunController {
         this.runRepository = runRepository;
     }
 
-    //    base URI
+    //
     @GetMapping("")
     List<Run> findAll() {
         return runRepository.findAll();
     }
 
-    //     return the run  by id
     @GetMapping("/{id}")
     Run findById(@PathVariable Integer id) {
         Optional run = runRepository.findById(id);
@@ -37,15 +36,12 @@ public class RunController {
         }
     }
 
-    //    post
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     void create(@Valid @RequestBody Run run) {
         runRepository.create(run);
     }
 
-
-//    put
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
